@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telecom-aiops
+spec:
+  replicas: 2   # runs 2 copies for high availability
+  selector:
+    matchLabels:
+      app: telecom-aiops
+  template:
+    metadata:
+      labels:
+        app: telecom-aiops
+    spec:
+      containers:
+      - name: telecom-aiops
+        image: telecom-aiops:latest
+        ports:
+        - containerPort: 8000
